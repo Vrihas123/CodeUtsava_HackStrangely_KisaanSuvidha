@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ecommerce.iml" filepath="$PROJECT_DIR$/Ecommerce.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codeutsava-hackathon.iml" filepath="$PROJECT_DIR$/codeutsava-hackathon.iml" />
     </modules>
   </component>
 </project>
