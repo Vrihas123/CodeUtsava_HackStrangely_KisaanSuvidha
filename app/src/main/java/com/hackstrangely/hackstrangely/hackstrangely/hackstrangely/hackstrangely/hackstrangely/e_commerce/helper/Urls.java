@@ -22,4 +22,6 @@ public class Urls {
     public static final String REQUEST_CONTACTUS ="/submit_contact_us";
     public static final String REQUEST_BQUIZ_STATUS="is_bquiz_active";
     public static final String REQUEST_SPLASH_SCREEN="is_update_available";
+    public static final String REQUEST_PRODUCTS="";
 }
+
