@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.model.CalculatorData;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,6 +88,16 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void showProgressBar(boolean show) {
+
+    }
+
+    @Override
+    public void setFinalProductData(List<CalculatorData> calculatorData) {
+
     }
 
     /**
