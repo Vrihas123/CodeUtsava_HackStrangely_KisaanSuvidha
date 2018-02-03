@@ -15,6 +15,8 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.model.SubProductsData;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.presenter.SubProductsPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.presenter.SubProductsPresenterImpl;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.provider.RetrofitSubProductsProvider;
 
 import java.util.List;
 
@@ -95,7 +97,8 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
         recyclerView_sub_products.setLayoutManager(gridLayoutManager);
         subProductsAdapter = new SubProductsAdapter(getContext());
         recyclerView_sub_products.setAdapter(subProductsAdapter);
-
+        subProductsPresenter = new SubProductsPresenterImpl(this,new RetrofitSubProductsProvider());
+        subProductsPresenter.requestSubProducts(sharedPrefs.getProduct(),sharedPrefs.getAccessToken());
        return view;
     }
 
@@ -127,7 +130,8 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
 
     @Override
     public void setSubProductsData(List<SubProductsData> subProductsList) {
-
+            subProductsAdapter.setSubProductsDataList(subProductsList);
+            subProductsAdapter.notifyDataSetChanged();
     }
 
     /**

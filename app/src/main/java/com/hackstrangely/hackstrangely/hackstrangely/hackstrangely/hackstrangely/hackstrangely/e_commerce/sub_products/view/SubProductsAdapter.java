@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.image_loaders.GlideImageLoader;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.home.HomeActivity;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.view.FinalProductFragment;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.model.SubProductsData;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class SubProductsAdapter extends RecyclerView.Adapter<SubProductsAdapter.
 
     private LayoutInflater layoutInflater;
     Context context;
+    private SharedPrefs sharedPrefs;
     private List<SubProductsData> subProductsDataList = new ArrayList<>();
 
     public SubProductsAdapter(Context context) {
@@ -38,7 +41,7 @@ public class SubProductsAdapter extends RecyclerView.Adapter<SubProductsAdapter.
     @Override
     public SubProductsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=layoutInflater.inflate(R.layout.sub_products_item,parent,false);
-
+        sharedPrefs = new SharedPrefs(context);
         return new ViewHolder(view);
     }
 
@@ -48,6 +51,13 @@ public class SubProductsAdapter extends RecyclerView.Adapter<SubProductsAdapter.
         holder.productName.setText(subProductsData.getProduct_name());
         holder.productPrice.setText(subProductsData.getProduct_price());
         Glide.with(context).load(subProductsData.getProduct_image()).into(holder.productImage);
+        holder.cardView_sub_products.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharedPrefs.setProductId(subProductsData.getProduct_id());
+                ((HomeActivity)context).addFragment(new FinalProductFragment());
+            }
+        });
     }
 
     @Override

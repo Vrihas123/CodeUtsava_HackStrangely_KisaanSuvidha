@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.model.CalculatorData;
+
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.presenter.CalculatorPresenter;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.presenter.CalculatorPresenterImpl;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.provider.CalculatorRetrofitProvider;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -288,7 +290,6 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     public void setFinalProductData(List<CalculatorData> calculatorData) {
 
     }
-
 
     /**
      * This interface must be implemented by activities that contain this
