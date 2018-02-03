@@ -114,7 +114,7 @@ public class FinalProductFragment extends Fragment implements FinalProductView{
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
         return view;

@@ -18,5 +18,6 @@ public class Urls {
     public static final String REQUEST_SPLASH_SCREEN="is_update_available";
     public static final String REQUEST_PRODUCTS = "";
     public static final String REQUEST_FINAL_PRODUCT = "";
+    public static final String REQUEST_CALCULATOR = "";
 }
 
