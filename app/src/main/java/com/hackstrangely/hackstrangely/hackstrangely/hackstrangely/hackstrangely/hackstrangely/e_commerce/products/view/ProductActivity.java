@@ -1,21 +1,9 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.view;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -74,11 +62,11 @@ public class ProductActivity extends AppCompatActivity
 
     }
 
-    
 
 
 
-    public void setFragment(Fragment fragment) {
+
+    /*public void setFragment(Fragment fragment) {
 
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -99,7 +87,7 @@ public class ProductActivity extends AppCompatActivity
             getSupportActionBar().setTitle(title);
         }
 
-    }
+    }*/
 
     @Override
     public void setData(List<ProductData> productDataList) {
