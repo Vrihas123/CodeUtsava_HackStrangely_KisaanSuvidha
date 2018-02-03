@@ -16,6 +16,122 @@
     <string name="sign_up">Register</string>
     <string name="otp_msg">An OTP has been sent to your mobile phone.</string>
 
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="January">
+        <item>Brinjal</item>
+    </string-array>
+
+    <string-array name="February">
+        <item>Bittergourd</item>
+        <item>Bottlegourd</item>
+        <item>Cucumber</item>
+        <item>French Beans</item>
+        <item>Okra</item>
+        <item>Sponge</item>
+        <item>Watermelon</item>
+        <item>Spinach</item>
+    </string-array>
+
+    <string-array name="March">
+        <item>Bittergourd</item>
+        <item>Bottlegourd</item>
+        <item>Cucumber</item>
+        <item>French Beans</item>
+        <item>Okra</item>
+        <item>Sponge</item>
+        <item>Watermelon</item>
+        <item>Spinach</item>
+    </string-array>
+
+    <string-array name="April">
+        <item>Capsicum</item>
+
+    </string-array>
+
+    <string-array name="May">
+        <item>Onion</item>
+        <item>Pepper</item>
+        <item>Brinjal</item>
+
+    </string-array>
+
+    <string-array name="June">
+        <item>Bittergourd</item>
+        <item>Bottlegourd</item>
+        <item>Brinjal</item>
+        <item>Cucumber</item>
+        <item>Cauliflower (Early)</item>
+        <item>Okra</item>
+        <item>Onion</item>
+        <item>Sem</item>
+        <item>Tomato</item>
+        <item>Pepper</item>
+    </string-array>
+
+    <string-array name="July">
+        <item>Bittergourd</item>
+        <item>Bottlegourd</item>
+        <item>Cucumber</item>
+        <item>Okra</item>
+        <item>Sem</item>
+        <item>Tomato</item>
+    </string-array>
+
+    <string-array name="August">
+        <item>Carrot</item>
+        <item>Cauliflower</item>
+        <item>Radish</item>
+        <item>Tomato</item>
+    </string-array>
+
+    <string-array name="September">
+        <item>Cabbage</item>
+        <item>Carrot</item>
+        <item>Cauliflower</item>
+        <item>Peas</item>
+        <item>Raddish</item>
+        <item>Tomato</item>
+        <item>Lettuce</item>
+    </string-array>
+
+    <string-array name="October">
+        <item>Beet</item>
+        <item>Brinjal</item>
+        <item>Cabbage</item>
+        <item>Cauliflower</item>
+        <item>Lettuce</item>
+        <item>Peas</item>
+        <item>Raddish</item>
+        <item>Spinach</item>
+        <item>Turnip</item>
+    </string-array>
+
+    <string-array name="November">
+        <item>Beet</item>
+        <item>Peas</item>
+        <item>Pepper</item>
+        <item>Radish</item>
+        <item>Tomato</item>
+        <item>Turnip</item>
+    </string-array>
+
+    <string-array name="December">
+        <item>Tomato</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

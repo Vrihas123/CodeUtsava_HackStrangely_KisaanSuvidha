@@ -10,7 +10,7 @@ import java.util.List;
 public class FinalProductData {
 
     String product_name;
-    private List<String> image_url;
+    String image_url;
     String product_details;
     String product_price;
     String product_quantity;
@@ -18,7 +18,7 @@ public class FinalProductData {
 
 
 
-    public FinalProductData(String product_name, List<String> image_url, String product_details, String product_price, String product_quantity) {
+    public FinalProductData(String product_name, String image_url, String product_details, String product_price, String product_quantity) {
         this.product_name = product_name;
         this.image_url = image_url;
         this.product_details = product_details;
@@ -43,7 +43,7 @@ public class FinalProductData {
 
     }
 
-    public List<String> getImage_url() {
+    public String getImage_url() {
         return image_url;
     }
 
