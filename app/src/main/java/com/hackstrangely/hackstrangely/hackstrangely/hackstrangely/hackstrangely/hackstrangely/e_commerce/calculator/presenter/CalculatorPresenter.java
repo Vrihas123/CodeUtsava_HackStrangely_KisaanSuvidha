@@ -6,6 +6,6 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public interface CalculatorPresenter {
 
-    void requestCalculator(String bedSize, String access_token, String bed_lines);
+    void requestCalculator(String bedSize, String access_token, String bed_lines , String crop);
 
 }

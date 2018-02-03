@@ -7,8 +7,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.model.CalculatorData;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.presenter.CalculatorPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.presenter.CalculatorPresenterImpl;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.provider.CalculatorRetrofitProvider;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +47,36 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    @BindView(R.id.spinner_months)
+    Spinner spinnerMonths;
+
+    @BindView(R.id.spinner_crops)
+    Spinner spinnerCrops;
+
+    @BindView(R.id.spacing)
+    TextView spacing;
+
+    @BindView(R.id.seeds)
+    TextView seeds;
+
+    @BindView(R.id.bed_size)
+    EditText bedSize;
+
+    @BindView(R.id.bed_lines)
+    EditText bedLines;
+
+    @BindView(R.id.calculate)
+    Button calculate;
+
+    ArrayAdapter<String> dataAdapter;
+    List<String> list;
+
+    SharedPrefs sharedPrefs;
+
+    CalculatorPresenter calculatorPresenter;
+
+    CalculatorData calculatorData;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -65,7 +113,151 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
+        ButterKnife.bind(this,view);
+        spinnerCrops.setVisibility(View.GONE);
+        spacing.setVisibility(View.INVISIBLE);
+        seeds.setVisibility(View.INVISIBLE);
+
+        spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch(position)
+                {
+                    case 1:
+                        list = Arrays.asList(getResources().getStringArray(R.array.January));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        list = Arrays.asList(getResources().getStringArray(R.array.February));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        list = Arrays.asList(getResources().getStringArray(R.array.March));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 4:
+                        list = Arrays.asList(getResources().getStringArray(R.array.April));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 5:
+                        list = Arrays.asList(getResources().getStringArray(R.array.May));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 6:
+                        list = Arrays.asList(getResources().getStringArray(R.array.June));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 7:
+                        list = Arrays.asList(getResources().getStringArray(R.array.July));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 8:
+                        list = Arrays.asList(getResources().getStringArray(R.array.August));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 9:
+                        list = Arrays.asList(getResources().getStringArray(R.array.September));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 10:
+                        list = Arrays.asList(getResources().getStringArray(R.array.October));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 11:
+                        list = Arrays.asList(getResources().getStringArray(R.array.November));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                    case 12:
+                        list = Arrays.asList(getResources().getStringArray(R.array.December));
+                        dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, list);
+                        dataAdapter.setDropDownViewResource
+                                (android.R.layout.simple_spinner_dropdown_item);
+                        spinnerCrops.setAdapter(dataAdapter);
+                        spinnerCrops.setVisibility(View.VISIBLE);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerCrops.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                sharedPrefs.setCrop(String.valueOf(spinnerCrops.getSelectedItem()));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
+                calculatorPresenter.requestCalculator("Put bed size here",sharedPrefs.getAccessToken(),"Put Bed lines here",sharedPrefs.getCrop());
+                spacing.setVisibility(View.VISIBLE);
+                spacing.setText("Spacing between seeds should be: "+calculatorData.getSpacing());
+                seeds.setVisibility(View.VISIBLE);
+                seeds.setText("Number of seeds required per Acre"+calculatorData.getSeeds());
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -86,6 +278,17 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void showProgressBar(boolean show) {
+
+    }
+
+    @Override
+    public void setFinalProductData(List<CalculatorData> calculatorData) {
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

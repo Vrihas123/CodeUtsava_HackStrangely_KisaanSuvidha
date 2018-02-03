@@ -17,7 +17,14 @@
     <string name="sign_up">Register</string>
     <string name="otp_msg">An OTP has been sent to your mobile phone.</string>
 
+    <string name="months_prompt">Choose the month</string>
+    <string name="crops_prompt">Choose the crop</string>
+    <string name="hint_bed_size">Bed Size(in Inches)</string>
+    <string name="hint_bed_lines">No. of Bed lines</string>
+    <string name="calculate">Calculate</string>
+
     <string-array name="months">
+        <item>Choose a month of Farming</item>
         <item>January</item>
         <item>February</item>
         <item>March</item>

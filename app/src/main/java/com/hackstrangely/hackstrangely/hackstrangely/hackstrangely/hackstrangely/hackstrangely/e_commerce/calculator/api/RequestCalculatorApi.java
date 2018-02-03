@@ -14,6 +14,6 @@ import retrofit2.http.Query;
 public interface RequestCalculatorApi {
 
     @GET(Urls.REQUEST_CALCULATOR)
-    Call<CalculatorList> getCalculatedData(@Query("bed_size") String size, @Query("access_token") String access_token, @Query("beds_lines") String line);
+    Call<CalculatorList> getCalculatedData(@Query("bed_size") String size, @Query("access_token") String access_token, @Query("beds_lines") String line, @Query("crop") String crop);
 
 }

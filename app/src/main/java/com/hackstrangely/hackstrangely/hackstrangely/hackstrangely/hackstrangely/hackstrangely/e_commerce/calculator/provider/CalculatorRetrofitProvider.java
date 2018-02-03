@@ -27,7 +27,7 @@ public class CalculatorRetrofitProvider implements CalculatorProvider{
     Call<CalculatorList> call;
 
     @Override
-    public void requestCalculatedData(String bed_size, String access_token, String lines, final OnCalculatedDataRecieved onCalculatedDataRecieved) {
+    public void requestCalculatedData(String bed_size, String access_token, String lines,String crop, final OnCalculatedDataRecieved onCalculatedDataRecieved) {
 
 
         Gson gson = new GsonBuilder()
@@ -46,7 +46,7 @@ public class CalculatorRetrofitProvider implements CalculatorProvider{
 
         requestCalculatorApi = retrofit.create(RequestCalculatorApi.class);
 
-        call = requestCalculatorApi.getCalculatedData(bed_size,access_token,lines);
+        call = requestCalculatorApi.getCalculatedData(bed_size,access_token,lines,crop);
 
         call.enqueue(new Callback<CalculatorList>() {
             @Override

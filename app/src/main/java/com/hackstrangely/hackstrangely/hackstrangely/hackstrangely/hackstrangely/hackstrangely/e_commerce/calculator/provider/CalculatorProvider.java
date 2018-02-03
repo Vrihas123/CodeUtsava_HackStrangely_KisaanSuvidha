@@ -8,6 +8,6 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 
 public interface CalculatorProvider {
 
-    void requestCalculatedData(String bed_size, String access_token, String lines, OnCalculatedDataRecieved onCalculatedDataRecieved);
+    void requestCalculatedData(String bed_size, String access_token, String lines,String crop, OnCalculatedDataRecieved onCalculatedDataRecieved);
 
 }
