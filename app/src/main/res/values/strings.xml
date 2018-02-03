@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">E-commerce</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_mobile">Contact Number</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_retype_password">Retype Password</string>
+    <string name="hint_otp">One Time Password(OTP)</string>
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg_mobile">Enter your contact number</string>
+    <string name="err_msg_mobile_digits">The contact number must be of 10 digits</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="err_msg_otp">Enter the OTP</string>
+    <string name="err_retype_password">This field should match password field</string>
+    <string name="sign_up">Register</string>
+    <string name="otp_msg">An OTP has been sent to your mobile phone.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

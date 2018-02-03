@@ -25,7 +25,7 @@ public class RetrofitLoginHelper implements LoginBaseClassHelper {
     private static String TAG ="RetrofitLoginHelper";
 
     @Override
-    public void loginData(String name, String mobile, String email, final LoginCallback loginCallback) {
+    public void loginData(String mobile, String password,  String access_token, final LoginCallback loginCallback) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -34,7 +34,7 @@ public class RetrofitLoginHelper implements LoginBaseClassHelper {
 
         Retrofit retrofit= new Retrofit.Builder().baseUrl(Urls.BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).build();
         RequestLogin requestLogin = retrofit.create(RequestLogin.class);
-        Call<LoginDataResponse> call= requestLogin.getJSON(name,mobile,email);
+        Call<LoginDataResponse> call= requestLogin.getJSON(mobile,password,access_token);
         call.enqueue(new Callback<LoginDataResponse>() {
             @Override
             public void onResponse(Call<LoginDataResponse> call, Response<LoginDataResponse> response) {

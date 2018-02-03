@@ -4,66 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.login.view.LoginActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:context="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.otp_verify.view.OtpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/login_heading"
+            android:id="@+id/otp_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="28dp"
+            android:text="@string/otp_msg"
+            android:textSize="18dp"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
             android:textColor="#000000"/>
 
         <LinearLayout
-            android:layout_below="@+id/login_heading"
+            android:layout_below="@+id/otp_heading"
             android:layout_width="match_parent"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="120dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_login_mobile"
+                android:id="@+id/input_layout_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/input_login_mobile"
+                    android:id="@+id/input_otp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_mobile"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_login_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/input_login_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_password"/>
+                    android:hint="@string/hint_otp"/>
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/sendOtp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send Otp"
-                android:onClick="proceed_login"
+                android:onClick="proceed_otp"
                 android:background="@color/colorPrimary"/>
             <ProgressBar
-                android:id="@+id/ProgressBar_login"
+                android:id="@+id/ProgressBar_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -71,5 +60,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-</ScrollView>
+    </ScrollView>
 </RelativeLayout>

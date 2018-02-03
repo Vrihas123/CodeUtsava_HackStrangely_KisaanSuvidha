@@ -9,5 +9,5 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 
 public interface LoginBaseClassHelper {
 
-    void loginData(String name, String mobile, String email, LoginCallback loginCallback);
+    void loginData(String mobile, String password,  String access_token, LoginCallback loginCallback);
 }

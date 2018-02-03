@@ -6,5 +6,5 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public interface LoginData {
 
-    void getLoginData(String name, String mobile, String email);
+    void getLoginData(String mobile,String password,  String access_token);
 }

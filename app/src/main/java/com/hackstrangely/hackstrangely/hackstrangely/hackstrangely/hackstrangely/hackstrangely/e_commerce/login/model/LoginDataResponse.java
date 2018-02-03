@@ -7,12 +7,11 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 public class LoginDataResponse {
 
     private boolean success;
-    private String message, token;
-    public LoginDataResponse(boolean success, String message, String token)
+    private String message;
+    public LoginDataResponse(boolean success, String message)
     {
         this.message=message;
         this.success=success;
-        this.token = token;
     }
 
 
@@ -22,8 +21,5 @@ public class LoginDataResponse {
 
     public String getMessage() {
         return message;
-    }
-    public String getToken(){
-        return token;
     }
 }

@@ -12,6 +12,7 @@ public class SharedPrefs {
     // Shared preferences file name
     private static final String PREF_NAME = "AndroidHiveLogin";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
+    private static final String KEY_IS_REGISTERED = "isRegistered";
     private static final String KEY_IS_OTPLOGGEDIN = "isOtpLoggedIn";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_MOBILE = "mobile";
@@ -45,6 +46,13 @@ public class SharedPrefs {
     public void setLogin(boolean isLoggedIn) {
 
         editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
+        // commit changes
+        editor.commit();
+        Log.d(TAG, "User login session modified!");
+    }
+    public void setRegister(boolean isRegistered) {
+
+        editor.putBoolean(KEY_IS_REGISTERED, isRegistered);
         // commit changes
         editor.commit();
         Log.d(TAG, "User login session modified!");

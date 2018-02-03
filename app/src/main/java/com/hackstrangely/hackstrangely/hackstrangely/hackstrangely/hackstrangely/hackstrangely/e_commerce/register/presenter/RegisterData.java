@@ -5,4 +5,5 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
  */
 
 public interface RegisterData {
+    void getRegisterData(String name, String mobile, String password, String email);
 }
