@@ -23,6 +23,8 @@ public class SharedPrefs {
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_FCM = "fcm";
     private static final String KEY_ACCESS_TOKEN = "access_token";
+    private static final String KEY_PRODUCT_TYPE = "product_type";
+    private static final String KEY_PRODUCT_ID = "product_id";
     private static final int KEY_VERSION=1;
     // LogCat tag
     private static String TAG = "Shared Preference";
@@ -149,6 +151,27 @@ public class SharedPrefs {
         editor.putString(KEY_MOBILE, userName);
         editor.commit();
 
+    }
+
+    public void setProduct(String productType) {
+        editor.putString(KEY_PRODUCT_TYPE, productType);
+        editor.commit();
+    }
+
+    public String getProduct() {
+
+        return pref.getString(KEY_PRODUCT_TYPE, "Your Product Type");
+
+    }
+
+    public void setProductId(String productId)
+    {
+        editor.putString(KEY_PRODUCT_ID, productId);
+        editor.commit();
+    }
+    public String getProductId()
+    {
+        return pref.getString(KEY_PRODUCT_ID,"Your Product ID");
     }
 
 }

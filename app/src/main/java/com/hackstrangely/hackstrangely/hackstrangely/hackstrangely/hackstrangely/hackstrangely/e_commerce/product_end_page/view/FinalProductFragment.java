@@ -1,20 +1,25 @@
-package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.view;
+package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.view;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.model.SubProductsData;
-import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.presenter.SubProductsPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.model.FinalProductData;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.presenter.FinalProductPresenter;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.presenter.FinalProductPresenterImpl;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.provider.FinalProductProvider;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.product_end_page.provider.FinalProductRerofitProvider;
 
 import java.util.List;
 
@@ -24,12 +29,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SubProductsFragment.OnFragmentInteractionListener} interface
+ * {@link FinalProductFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SubProductsFragment#newInstance} factory method to
+ * Use the {@link FinalProductFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubProductsFragment extends Fragment implements SubProductsView{
+public class FinalProductFragment extends Fragment implements FinalProductView{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,20 +43,32 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private SharedPrefs sharedPrefs;
-    private SubProductsPresenter subProductsPresenter;
-    private SubProductsAdapter subProductsAdapter;
-    private GridLayoutManager gridLayoutManager;
-
-    @BindView(R.id.sub_products_recycler)
-    RecyclerView recyclerView_sub_products;
-
-    @BindView(R.id.ProgressBar_sub_products)
-    ProgressBar progressBar;
 
     private OnFragmentInteractionListener mListener;
 
-    public SubProductsFragment() {
+    @BindView(R.id.product_image)
+    ImageView productImage;
+
+    @BindView(R.id.product_name)
+    TextView productName;
+
+    @BindView(R.id.product_price)
+    TextView productPrice;
+
+    @BindView(R.id.product_desc)
+    TextView productDesc;
+
+    @BindView(R.id.product_quantity)
+    TextView productQuantity;
+
+    @BindView(R.id.order)
+    Button order;
+
+    FinalProductPresenter finalProductPresenter;
+    SharedPrefs sharedPrefs;
+    FinalProductData finalProductData;
+
+    public FinalProductFragment() {
         // Required empty public constructor
     }
 
@@ -61,11 +78,11 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SubProductsFragment.
+     * @return A new instance of fragment FinalProductFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SubProductsFragment newInstance(String param1, String param2) {
-        SubProductsFragment fragment = new SubProductsFragment();
+    public static FinalProductFragment newInstance(String param1, String param2) {
+        FinalProductFragment fragment = new FinalProductFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,18 +102,22 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-       View view =  inflater.inflate(R.layout.fragment_sub_products, container, false);
-       sharedPrefs = new SharedPrefs(getContext());
-       ButterKnife.bind(this, view);
-        recyclerView_sub_products.setHasFixedSize(true);
-        recyclerView_sub_products.setNestedScrollingEnabled(false);
-        gridLayoutManager = new GridLayoutManager(getContext(),2);
-        recyclerView_sub_products.setLayoutManager(gridLayoutManager);
-        subProductsAdapter = new SubProductsAdapter(getContext());
-        recyclerView_sub_products.setAdapter(subProductsAdapter);
-
-       return view;
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_final_product, container, false);
+        ButterKnife.bind(this,view);
+        finalProductPresenter = new FinalProductPresenterImpl(this, new FinalProductRerofitProvider());
+        finalProductPresenter.requestFinalProduct(sharedPrefs.getProductId(),sharedPrefs.getAccessToken());
+        Glide.with(this).load(finalProductData.getImage_url()).into(productImage);
+        productDesc.setText(finalProductData.getProduct_details());
+        productName.setText(finalProductData.getProduct_name());
+        productPrice.setText(finalProductData.getProduct_price());
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -109,6 +130,7 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
     }
 
     @Override
@@ -119,14 +141,11 @@ public class SubProductsFragment extends Fragment implements SubProductsView{
 
     @Override
     public void showProgressBar(boolean show) {
-        if(show)
-            progressBar.setVisibility(View.VISIBLE);
-        else
-            progressBar.setVisibility(View.GONE);
+
     }
 
     @Override
-    public void setSubProductsData(List<SubProductsData> subProductsList) {
+    public void setFinalProductData(List<FinalProductData> FinalProductList) {
 
     }
 
