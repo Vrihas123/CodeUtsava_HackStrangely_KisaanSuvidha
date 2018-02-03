@@ -26,6 +26,7 @@ public class SharedPrefs {
     private static final String KEY_PRODUCT_TYPE = "product_type";
     private static final String KEY_PRODUCT_ID = "product_id";
     private static final int KEY_VERSION=1;
+    private static final String KEY_LANGUAGE = "lang";
     // LogCat tag
     private static String TAG = "Shared Preference";
     // Shared Preferences
@@ -65,8 +66,18 @@ public class SharedPrefs {
         Log.d(TAG, "User login session modified!");
     }
 
+    public void setKeyLanguage(String language){
+        editor.putString(KEY_LANGUAGE,language);
+        editor.commit();
+    }
+    public String getKeyLanguage(){
+        return pref.getString(KEY_LANGUAGE,"1");
+    }
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
+    }
+    public boolean isRegistered(){
+        return pref.getBoolean(KEY_IS_REGISTERED,false);
     }
 
     public String getUsername() {

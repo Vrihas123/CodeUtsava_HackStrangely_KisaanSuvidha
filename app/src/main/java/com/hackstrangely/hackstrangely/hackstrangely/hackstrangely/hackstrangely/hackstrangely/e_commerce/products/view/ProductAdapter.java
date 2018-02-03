@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.home.HomeActivity;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.model.ProductData;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.view.SubProductsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,11 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 sharedPrefs.setProduct(productData1.getProduct_type().toString());
-
-                /*((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container_body, new SubProductFragment())
-                        .addToBackStack(null)
-                        .commit();*/
+                ((HomeActivity)context).addFragment(new SubProductsFragment());
             }
         });
 
