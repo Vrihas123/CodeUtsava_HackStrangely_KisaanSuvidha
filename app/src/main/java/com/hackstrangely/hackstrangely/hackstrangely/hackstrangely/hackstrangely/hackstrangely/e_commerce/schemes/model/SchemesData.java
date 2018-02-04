@@ -7,13 +7,13 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 public class SchemesData {
 
     String scheme;
-    String Ministry;
+    String ministry;
     String objective;
     String id;
 
     public SchemesData(String scheme, String ministry, String objective, String id) {
         this.scheme = scheme;
-        Ministry = ministry;
+        this.ministry = ministry;
         this.objective = objective;
         this.id = id;
     }
@@ -23,7 +23,7 @@ public class SchemesData {
     }
 
     public String getMinistry() {
-        return Ministry;
+        return ministry;
     }
 
     public String getObjective() {

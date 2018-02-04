@@ -4,11 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +35,9 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
+    private HomeAdapter homeAdapter;
+    private List<HomeData> homeData = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,7 +74,40 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_home);
+        homeAdapter = new HomeAdapter(homeData);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(homeAdapter);
+        addItems();
+        return view;
+    }
+
+    public void addItems(){
+        HomeData data = new HomeData("Products");
+        homeData.add(data);
+
+        data = new HomeData("Calculator");
+        homeData.add(data);
+
+        data = new HomeData("Diseases");
+        homeData.add(data);
+
+        data = new HomeData("Schemes");
+        homeData.add(data);
+
+        data = new HomeData("News");
+        homeData.add(data);
+
+        data = new HomeData("Benefits of Organic Farming");
+        homeData.add(data);
+
+        data = new HomeData("Discussion Forum");
+        homeData.add(data);
+
+        homeAdapter.notifyDataSetChanged();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -78,12 +120,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override

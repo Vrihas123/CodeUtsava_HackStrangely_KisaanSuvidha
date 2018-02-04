@@ -60,7 +60,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 sharedPrefs.setProduct(productData1.getProduct_type().toString());
-                ((HomeActivity)context).addFragment(new SubProductsFragment());
+//                ((HomeActivity)context).addFragment(new SubProductsFragment());
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_body, new SubProductsFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

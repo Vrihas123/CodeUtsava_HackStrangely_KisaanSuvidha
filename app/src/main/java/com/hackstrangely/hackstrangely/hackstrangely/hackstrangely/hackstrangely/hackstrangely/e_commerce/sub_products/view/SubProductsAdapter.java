@@ -1,6 +1,7 @@
 package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.view;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -55,7 +56,11 @@ public class SubProductsAdapter extends RecyclerView.Adapter<SubProductsAdapter.
             @Override
             public void onClick(View v) {
                 sharedPrefs.setProductId(subProductsData.getProduct_id());
-                ((HomeActivity)context).addFragment(new FinalProductFragment());
+                //((HomeActivity)context).addFragment(new FinalProductFragment());
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_body, new FinalProductFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }

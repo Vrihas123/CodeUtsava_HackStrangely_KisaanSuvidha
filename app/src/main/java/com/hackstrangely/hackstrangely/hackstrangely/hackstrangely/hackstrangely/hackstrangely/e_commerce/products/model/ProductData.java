@@ -6,16 +6,16 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public class ProductData {
 
-    String property_type;
+    String product_type;
     String image_url;
 
     public ProductData(String product_type, String image_url) {
-        this.property_type = product_type;
+        this.product_type = product_type;
         this.image_url = image_url;
     }
 
     public String getProduct_type() {
-        return property_type;
+        return product_type;
     }
 
     public String getImage_url() {
