@@ -1,13 +1,107 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.view.CalculatorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <Spinner
+
+            android:id="@+id/spinner_months"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="40dp"
+            android:spinnerMode="dialog"
+            android:entries="@array/months"
+            android:prompt="@string/months_prompt" />
+
+        <Spinner
+            android:id="@+id/spinner_crops"
+            android:layout_below="@+id/spinner_months"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="40dp"
+            android:spinnerMode="dialog"
+            android:prompt="@string/crops_prompt"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_bed_size"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/spinner_crops"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/bed_size"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_bed_size"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_bed_lines"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/input_layout_bed_size"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/bed_lines"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_bed_lines"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout_bed_lines"
+            android:layout_marginTop="40dp"
+            android:text="@string/calculate"
+            android:textSize="18dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/spacing"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:text="Spacing"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"/>
+
+        <TextView
+            android:id="@+id/seeds"
+            android:textSize="18dp"
+            android:textColor="#000000"
+            android:text="Spacing"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/spacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

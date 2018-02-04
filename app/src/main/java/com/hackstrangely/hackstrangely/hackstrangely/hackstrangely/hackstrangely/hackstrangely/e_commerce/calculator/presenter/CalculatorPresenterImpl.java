@@ -20,10 +20,10 @@ public class CalculatorPresenterImpl implements CalculatorPresenter{
     }
 
     @Override
-    public void requestCalculator(String bedSize, String access_token, String bed_lines) {
+    public void requestCalculator(String bedSize, String access_token, String bed_lines, String crop) {
 
         calculatorView.showProgressBar(true);
-        calculatorProvider.requestCalculatedData(bedSize, access_token, bed_lines,new OnCalculatedDataRecieved() {
+        calculatorProvider.requestCalculatedData(bedSize, access_token, bed_lines, crop,new OnCalculatedDataRecieved() {
             @Override
             public void onSuccess(CalculatorList calculatorList) {
 

@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".register.view.RegisterActivity">
             <intent-filter>
@@ -17,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".otp_verify.view.OtpActivity" />
         <activity android:name=".language_selecter.LanguageActivity" />

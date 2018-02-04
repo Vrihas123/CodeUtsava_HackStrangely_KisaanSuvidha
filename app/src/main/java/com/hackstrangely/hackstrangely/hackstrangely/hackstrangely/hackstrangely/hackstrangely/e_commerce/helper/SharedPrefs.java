@@ -25,6 +25,7 @@ public class SharedPrefs {
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final String KEY_PRODUCT_TYPE = "product_type";
     private static final String KEY_PRODUCT_ID = "product_id";
+    private static final String KEY_CROP = "crop";
     private static final int KEY_VERSION=1;
     private static final String KEY_LANGUAGE = "lang";
     // LogCat tag
@@ -185,4 +186,14 @@ public class SharedPrefs {
         return pref.getString(KEY_PRODUCT_ID,"Your Product ID");
     }
 
+    public void setCrop(String crop)
+    {
+        editor.putString(KEY_CROP,crop);
+        editor.commit();
+    }
+
+    public String getCrop()
+    {
+        return pref.getString(KEY_CROP,"Crop Name");
+    }
 }
