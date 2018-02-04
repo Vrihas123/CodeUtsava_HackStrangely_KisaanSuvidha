@@ -15,7 +15,12 @@
     <string name="err_retype_password">This field should match password field</string>
     <string name="sign_up">Register</string>
     <string name="otp_msg">An OTP has been sent to your mobile phone.</string>
-
+    <string name="products">Products</string>
+    <string name="calculator">Calculator</string>
+    <string name="schemes">Schemes</string>
+    <string name="crops_diseases">Crops Diseases</string>
+    <string name="agricultural_news">Agricultural News</string>
+    <string name="discussion_forum">Discussion Forum</string>
     <string name="coming_soon_msg">Coming Soon!</string>
 
     <string name="hint_size">Bed Size</string>

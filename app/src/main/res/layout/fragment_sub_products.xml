@@ -6,9 +6,6 @@
     tools:context="com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.sub_products.view.SubProductsFragment"
     android:background="#FFF59D">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent">
@@ -28,6 +25,5 @@
 
 
    </RelativeLayout>
-    </ScrollView>
 
 </LinearLayout>
