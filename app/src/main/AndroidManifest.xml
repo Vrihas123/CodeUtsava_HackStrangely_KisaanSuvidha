@@ -17,19 +17,22 @@
 
         <activity android:name=".home.HomeActivity" >
 
-        </activity>
-        <activity android:name=".register.view.RegisterActivity">
 
         </activity>
         <activity android:name=".products.view.ProductActivity"></activity>
         <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".otp_verify.view.OtpActivity" />
         <activity android:name=".language_selecter.LanguageActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".register.view.RegisterActivity">
+
         </activity>
         <activity android:name=".splash_screen.SplashScreenActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">

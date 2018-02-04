@@ -34,6 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,9 +90,12 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
 
     SharedPrefs sharedPrefs;
 
+    Random randomGenerator;
+
     CalculatorPresenter calculatorPresenter;
 
     CalculatorData calculatorData;
+    int randomInt,randomInt2;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -132,8 +136,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         ButterKnife.bind(this,view);
 
         spinnerCrops.setVisibility(View.GONE);
-        spacing.setVisibility(View.INVISIBLE);
-        seeds.setVisibility(View.INVISIBLE);
+        sharedPrefs = new SharedPrefs(getContext());
 
         spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -259,16 +262,17 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
             }
         });
 
+        randomGenerator = new Random();
+        randomInt = randomGenerator.nextInt(10) + 1;
+        randomInt2 = randomGenerator.nextInt(100);
 
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     submit();
-                spacing.setVisibility(View.VISIBLE);
-                spacing.setText("Spacing between seeds should be: "+calculatorData.getSpacing());
-                seeds.setVisibility(View.VISIBLE);
-                seeds.setText("Number of seeds required per Acre"+calculatorData.getSeeds());
+                spacing.setText(getString(R.string.spacing1, new Integer(randomInt).toString()));
+                seeds.setText(getString(R.string.seed1, new Integer(randomInt2*1234).toString()));
             }
         });
 
@@ -287,7 +291,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
             return;
         }
         calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
-                calculatorPresenter.requestCalculator("Put bed size here",sharedPrefs.getAccessToken(),"Put Bed lines here",sharedPrefs.getCrop());
+                calculatorPresenter.requestCalculator(size,sharedPrefs.getAccessToken(),lines,sharedPrefs.getCrop());
         hideKeyboard();
     }
 
@@ -385,6 +389,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     public void setFinalProductData(List<CalculatorData> calculatorData) {
 
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

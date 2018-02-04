@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.view.CalculatorFragment;
+
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.view.ProductFragment;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.schemes.view.SchemesFragment;
 
@@ -56,6 +57,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        setFragment(new CalculatorFragment());
+
 
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,14 +123,14 @@ public class HomeActivity extends AppCompatActivity {
 //        homeAdapter.notifyDataSetChanged();
 
 
-//    public void setFragment(Fragment fragment) {
-//        if (fragment != null) {
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.container, fragment);
-//            fragmentTransaction.commit();
-//        }
-//    }
+    public void setFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, fragment);
+            fragmentTransaction.commit();
+        }
+    }
 
 
     public void addFragment(Fragment fragment) {
