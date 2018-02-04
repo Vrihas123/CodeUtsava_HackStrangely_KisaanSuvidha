@@ -105,6 +105,7 @@ public class FinalProductFragment extends Fragment implements FinalProductView{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_final_product, container, false);
         ButterKnife.bind(this,view);
+        sharedPrefs = new SharedPrefs(getContext());
         finalProductPresenter = new FinalProductPresenterImpl(this, new FinalProductRerofitProvider());
         finalProductPresenter.requestFinalProduct(sharedPrefs.getProductId(),sharedPrefs.getAccessToken());
         Glide.with(this).load(finalProductData.getImage_url()).into(productImage);

@@ -120,6 +120,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         spinnerCrops.setVisibility(View.GONE);
         spacing.setVisibility(View.INVISIBLE);
         seeds.setVisibility(View.INVISIBLE);
+        sharedPrefs = new SharedPrefs(getContext());
 
         spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

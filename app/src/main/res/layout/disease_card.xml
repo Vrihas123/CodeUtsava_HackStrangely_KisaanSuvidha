@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/diseaseCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        android:background="@drawable/shape">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/disease_relative_layout">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/progressBar_disease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:layout_centerHorizontal="true"
+                style="@style/AVLoadingIndicatorView"
+                android:visibility="visible"
+                app:indicatorName="BallTrianglePathIndicator"
+                app:indicatorColor="@color/colorAccent"
+                />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230sp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:id="@+id/image"/>
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="4dp"
+                android:layout_below="@id/image"
+                android:text="Disease Name"
+                android:textColor="#01579B"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/prevention"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/name"
+                android:padding="4dp"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:ellipsize="end"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

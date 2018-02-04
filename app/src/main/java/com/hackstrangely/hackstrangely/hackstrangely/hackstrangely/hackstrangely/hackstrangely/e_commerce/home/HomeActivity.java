@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.calculator.view.CalculatorFragment;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.disease.view.DiseaseFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container, new CalculatorFragment());
+        fragmentTransaction.replace(R.id.container, new DiseaseFragment());
         fragmentTransaction.commit();
 
     }
