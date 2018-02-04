@@ -8,12 +8,12 @@ import java.util.List;
 
 public class FinalProductList {
 
-    private List<FinalProductData> data;
+    private List<FinalProductData> products;
     private boolean success;
     private String message;
 
-    public List<FinalProductData> getData() {
-        return data;
+    public List<FinalProductData> getProducts() {
+        return products;
     }
 
     public boolean isSuccess() {
@@ -24,9 +24,9 @@ public class FinalProductList {
         return message;
     }
 
-    public FinalProductList(List<FinalProductData> data, boolean success, String message) {
+    public FinalProductList(List<FinalProductData> products, boolean success, String message) {
 
-        this.data = data;
+        this.products = products;
         this.success = success;
         this.message = message;
     }

@@ -30,7 +30,7 @@ public class FinalProductPresenterImpl implements FinalProductPresenter{
 
                 finalProductView.showProgressBar(false);
                 if(finalProductList.isSuccess()){
-                    finalProductView.setFinalProductData(finalProductList.getData());
+                    finalProductView.setFinalProductData(finalProductList.getProducts());
                 }
 
             }

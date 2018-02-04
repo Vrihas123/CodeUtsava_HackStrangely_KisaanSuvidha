@@ -136,6 +136,8 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         ButterKnife.bind(this,view);
 
         spinnerCrops.setVisibility(View.GONE);
+        spacing.setVisibility(View.INVISIBLE);
+        seeds.setVisibility(View.INVISIBLE);
         sharedPrefs = new SharedPrefs(getContext());
 
         spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -271,6 +273,8 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
             @Override
             public void onClick(View v) {
                     submit();
+                    spacing.setVisibility(View.VISIBLE);
+                    seeds.setVisibility(View.VISIBLE);
                 spacing.setText(getString(R.string.spacing1, new Integer(randomInt).toString()));
                 seeds.setText(getString(R.string.seed1, new Integer(randomInt2*1234).toString()));
             }
@@ -290,9 +294,9 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         if (!validateBedLines()){
             return;
         }
-        calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
+      /*  calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
                 calculatorPresenter.requestCalculator(size,sharedPrefs.getAccessToken(),lines,sharedPrefs.getCrop());
-        hideKeyboard();
+       */ hideKeyboard();
     }
 
     private void hideKeyboard() {

@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".home.HomeActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".products.view.ProductActivity"></activity>
         <activity android:name=".login.view.LoginActivity" />
@@ -28,11 +28,7 @@
 
         </activity>
         <activity android:name=".register.view.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".splash_screen.SplashScreenActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
