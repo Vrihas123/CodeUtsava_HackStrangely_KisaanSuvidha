@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.R;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.helper.SharedPrefs;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.model.ProductData;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.presenter.ProductPresenter;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.presenter.ProductPresenterImpl;
@@ -25,6 +26,7 @@ public class ProductActivity extends AppCompatActivity
     @BindView(R.id.product_recycler)
     RecyclerView productRecycler;
 
+    private SharedPrefs sharedPrefs;
     private ProductAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
 
@@ -38,7 +40,7 @@ public class ProductActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
-
+        sharedPrefs = new SharedPrefs(this);
         productRecycler.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(this);
         productRecycler.setLayoutManager(linearLayoutManager);
@@ -46,10 +48,8 @@ public class ProductActivity extends AppCompatActivity
         productRecycler.setAdapter(adapter);
         productRecycler.setNestedScrollingEnabled(false);
 
-
-
         productPresenter = new ProductPresenterImpl(this,new RetrofitProductProvider());
-        productPresenter.requesCategory();
+        productPresenter.requesCategory(sharedPrefs.getAccessToken(),sharedPrefs.getKeyLanguage());
 
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
@@ -98,11 +98,11 @@ public class ProductActivity extends AppCompatActivity
     @Override
     public void showProgressBar(boolean show) {
 
-        if(show == true){
+        if(show){
             progressBar.setVisibility(View.VISIBLE);
         }
         else{
-            progressBar.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.GONE);
         }
 
     }

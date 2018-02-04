@@ -21,10 +21,10 @@ public class ProductPresenterImpl implements ProductPresenter {
     }
 
     @Override
-    public void requesCategory() {
+    public void requesCategory(String access_token, String language) {
 
         productView.showProgressBar(true);
-        productProvider.requestCategory(new OnProductRecieved() {
+        productProvider.requestCategory(access_token,language,new OnProductRecieved() {
             @Override
             public void onSuccess(ProductList productList) {
                 productView.showProgressBar(false);

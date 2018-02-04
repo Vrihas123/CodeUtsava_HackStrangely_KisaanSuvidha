@@ -16,6 +16,7 @@ public class Urls {
     public static final String REQUEST_SUB_PRODUCTS="sub_products";
     public static final String REQUEST_CONTACTUS ="/submit_contact_us";
     public static final String REQUEST_SPLASH_SCREEN="is_update_available";
+    public static final String REQUEST_SCHEMES = "";
     public static final String REQUEST_PRODUCTS = "";
     public static final String REQUEST_FINAL_PRODUCT = "";
     public static final String REQUEST_CALCULATOR = "";
