@@ -8,6 +8,6 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 
 public interface ProductProvider {
 
-    void requestCategory(OnProductRecieved onProductRecieved);
+    void requestCategory(String access_token,String language, OnProductRecieved onProductRecieved);
 
 }

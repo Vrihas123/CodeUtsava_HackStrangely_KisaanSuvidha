@@ -6,5 +6,5 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 
 public interface ProductPresenter {
 
-    void requesCategory();
+    void requesCategory(String access_token, String language);
 }

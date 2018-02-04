@@ -1,4 +1,4 @@
-package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.provider;
+package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.schemes.provider;
 
 
 import com.google.gson.Gson;
@@ -7,6 +7,9 @@ import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.api.RequestCategoryApi;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.model.ProductList;
 import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.products.view.OnProductRecieved;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.schemes.api.RequestSchemesApi;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.schemes.model.SchemesList;
+import com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangely.e_commerce.schemes.view.OnSchemesRecieved;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,10 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by samveg on 24/8/17.
  */
 
-public class RetrofitProductProvider implements ProductProvider {
-    @Override
-    public void requestCategory(String access_token,String language,final OnProductRecieved onProductRecieved) {
+public class RetrofitSchemesProvider implements SchemesProvider {
 
+    @Override
+    public void requestSchemesProvider(String access_token, final OnSchemesRecieved onSchemesRecieved) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -41,18 +44,17 @@ public class RetrofitProductProvider implements ProductProvider {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
-        final RequestCategoryApi request = retrofit.create(RequestCategoryApi.class);
-        Call<ProductList> call=request.getProductData(access_token,language);
-        call.enqueue(new Callback<ProductList>(){
+        final RequestSchemesApi requestSchemesApi = retrofit.create(RequestSchemesApi.class);
+        Call<SchemesList> call = requestSchemesApi.getSchemesData(access_token);
+        call.enqueue(new Callback<SchemesList>() {
             @Override
-            public void onResponse(Call<ProductList> call, Response<ProductList> response) {
-
-                onProductRecieved.onSuccess(response.body());
+            public void onResponse(Call<SchemesList> call, Response<SchemesList> response) {
+                onSchemesRecieved.onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<ProductList> call, Throwable throwable) {
-                onProductRecieved.onFailure();
+            public void onFailure(Call<SchemesList> call, Throwable t) {
+                onSchemesRecieved.onFailure();
             }
         });
 

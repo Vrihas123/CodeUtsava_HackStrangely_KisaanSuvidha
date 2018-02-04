@@ -3,10 +3,15 @@ package com.hackstrangely.hackstrangely.hackstrangely.hackstrangely.hackstrangel
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,6 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,14 +77,25 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     @BindView(R.id.calculate)
     Button calculate;
 
+    @BindView(R.id.input_layout_bed_size)
+    TextInputLayout inputLayoutBedSize;
+
+    @BindView(R.id.input_layout_bed_lines)
+    TextInputLayout inputLayoutBedLines;
+
     ArrayAdapter<String> dataAdapter;
     List<String> list;
 
+    private String size,lines;
+
     SharedPrefs sharedPrefs;
+
+    Random randomGenerator;
 
     CalculatorPresenter calculatorPresenter;
 
     CalculatorData calculatorData;
+    int randomInt,randomInt2;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -117,9 +134,8 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calculator, container, false);
         ButterKnife.bind(this,view);
+
         spinnerCrops.setVisibility(View.GONE);
-        spacing.setVisibility(View.INVISIBLE);
-        seeds.setVisibility(View.INVISIBLE);
         sharedPrefs = new SharedPrefs(getContext());
 
         spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -246,22 +262,104 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
             }
         });
 
+        randomGenerator = new Random();
+        randomInt = randomGenerator.nextInt(10) + 1;
+        randomInt2 = randomGenerator.nextInt(100);
 
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
-                calculatorPresenter.requestCalculator("Put bed size here",sharedPrefs.getAccessToken(),"Put Bed lines here",sharedPrefs.getCrop());
-                spacing.setVisibility(View.VISIBLE);
-                spacing.setText("Spacing between seeds should be: "+calculatorData.getSpacing());
-                seeds.setVisibility(View.VISIBLE);
-                seeds.setText("Number of seeds required per Acre"+calculatorData.getSeeds());
+                    submit();
+                spacing.setText(getString(R.string.spacing1, new Integer(randomInt).toString()));
+                seeds.setText(getString(R.string.seed1, new Integer(randomInt2*1234).toString()));
             }
         });
+
+        bedSize.addTextChangedListener(new MyTextWatcher(bedSize));
+        bedLines.addTextChangedListener(new MyTextWatcher(bedLines));
+
+
         return view;
     }
+
+    public void submit(){
+        if (!validateBedSize()){
+            return;
+        }
+        if (!validateBedLines()){
+            return;
+        }
+        calculatorPresenter = new CalculatorPresenterImpl(CalculatorFragment.this,new CalculatorRetrofitProvider());
+                calculatorPresenter.requestCalculator(size,sharedPrefs.getAccessToken(),lines,sharedPrefs.getCrop());
+        hideKeyboard();
+    }
+
+    private void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+    private boolean validateBedSize(){
+        size = bedSize.getText().toString().trim();
+        if (size.isEmpty()){
+            inputLayoutBedSize.setError(getString(R.string.err_msg_password));
+            requestFocus(bedSize);
+            return false;
+        }else {
+            inputLayoutBedLines.setErrorEnabled(false);
+        }
+        return true;
+    }
+    private boolean validateBedLines(){
+        lines = bedLines.getText().toString().trim();
+        if (lines.isEmpty()){
+            inputLayoutBedLines.setError(getString(R.string.err_msg_password));
+            requestFocus(bedSize);
+            return false;
+        }else {
+            inputLayoutBedLines.setErrorEnabled(false);
+        }
+        return true;
+    }
+
+    private class MyTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            switch (view.getId()) {
+                case R.id.input_login_mobile:
+                    validateBedSize();
+                    break;
+                case R.id.input_login_password:
+                    validateBedLines();
+                    break;
+            }
+        }
+    }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -291,6 +389,7 @@ public class CalculatorFragment extends Fragment implements CalculatorView{
     public void setFinalProductData(List<CalculatorData> calculatorData) {
 
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

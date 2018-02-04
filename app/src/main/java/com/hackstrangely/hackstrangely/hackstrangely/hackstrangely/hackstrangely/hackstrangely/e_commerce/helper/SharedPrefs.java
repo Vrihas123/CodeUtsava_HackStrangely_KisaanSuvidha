@@ -26,6 +26,8 @@ public class SharedPrefs {
     private static final String KEY_PRODUCT_TYPE = "product_type";
     private static final String KEY_PRODUCT_ID = "product_id";
     private static final String KEY_CROP = "crop";
+    private static final String KEY_SPACE = "space";
+    private static final String KEY_SEED = "seed";
     private static final int KEY_VERSION=1;
     private static final String KEY_LANGUAGE = "lang";
     // LogCat tag
@@ -195,5 +197,23 @@ public class SharedPrefs {
     public String getCrop()
     {
         return pref.getString(KEY_CROP,"Crop Name");
+    }
+
+    public  void setSpacing(String space){
+        editor.putString(KEY_SPACE,space);
+        editor.commit();
+    }
+    public  void setSeed(String seed){
+        editor.putString(KEY_SEED,seed);
+        editor.commit();
+    }
+
+    public String getSpacing()
+    {
+        return pref.getString(KEY_SPACE,"space");
+    }
+    public String getSeed()
+    {
+        return pref.getString(KEY_SEED,"Seed value");
     }
 }
